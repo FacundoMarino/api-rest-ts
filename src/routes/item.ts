@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { logMiddleware } from "../../middleware/logMiddleware";
 import {
   getItem,
   getItems,
@@ -11,7 +12,7 @@ const router = Router();
 
 router.get("/:id", getItem);
 
-router.get("/", getItems);
+router.get("/", logMiddleware, getItems);
 
 router.put("/:id", updateItem);
 
